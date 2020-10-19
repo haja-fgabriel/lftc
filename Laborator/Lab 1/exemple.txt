@@ -1,0 +1,102 @@
+
+2. Exemple de cod corect
+
+------ cmmdc a două numere naturale ------
+
+    int a = 21, b = 35;
+    //scan(a, b);
+    int cmmdc(int a, int b) {
+        int r;
+        while (b) {
+            r = a%b;
+            a = b;
+            b = r;
+        }
+        return a;
+    }
+
+    print(cmmdc(a, b));
+
+------------------------------------------
+
+------ 2. perimetrul și aria cercului de rază dată ------
+
+    float r;
+    float pi = 3.1415926536;
+    // scan(r);
+    float perimetru = 2 * pi *r;
+    float aria = pi * r * r;
+    print(perimetru, aria);
+
+---------------------------------------------------------
+
+------ 3. verificarea primalității unui număr ------
+
+    int a, i;
+    scan(a);
+    if (a%2 == 0) {
+        print(0);
+        exit;
+    }
+    i = 3;
+    while (i <= a/2) {
+        if (a%i == 0) {
+            print(0);
+            exit;
+        }
+        i = i + 2;
+    }
+
+    print(1);
+
+----------------------------------------------------
+
+3. Exemple incorecte 
+
+Inexistente în limbajul original:
+----------------------  1.  ------------------------
+
+    int a;
+    scan(a);
+
+    // a=5 este atribuire, ceea ce nu este posibil
+    if (a=5)
+        print(a);
+
+----------------------------------------------------
+
+
+----------------------  2.  ------------------------
+
+    int a, s = 0;
+    scan(a);
+    // mini-limbajul nostru nu conține structura repetitivă for
+    for (; a > 0; a--)
+        s += a;
+    print(s);
+
+----------------------------------------------------
+
+Existente și în limbajul original:
+----------------------------------------------------
+
+    int a, s = 0
+    scan(a);
+    // mini-limbajul nostru nu conține structura repetitivă for
+    for (; a > 0; a--)
+        s += a
+    print(s);
+
+----------------------------------------------------
+
+
+----------------------------------------------------
+
+    // declarările de funcții trebuie realizate separat
+    int a, cmmdc(int c, int d) {
+        if (d)
+            return cmmdc(d, c%d);
+        else return c;
+    }
+
+----------------------------------------------------

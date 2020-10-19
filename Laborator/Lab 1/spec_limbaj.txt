@@ -1,0 +1,82 @@
+Haja Florin - Limbaje formale și tehnici de compilare
+Laborator 1
+
+1. Specificare limbaj
+  Datorită cerinței de a prelua un subset al unui limbaj existent, vom alege C, datorită paradigmei sale simple, imperative.
+  Noi vom numi acest limbaj nou C--, datorită lipsurilor pe care le are față de C. 
+  Acest limbaj va folosi de două tipuri de date simple: int și float, datorită aplicațiilor sale vaste. Amândouă vor fi reprezentate pe 64 de biți cu interpretare cu semn.
+  De asemenea, identificatorii nu vor depăși 8 caractere în lungime, pentru a păstra simplitatea.
+  Operațiile pe biți nu vor exista, de asemenea nici pointerii.
+
+  Analizatorul său va folosi un tabel de simboluri bazat pe arbore binar de căutare.
+
+  Specificare reguli:
+    <program> -> <listă_operații>
+    <listă_operații> -> <bloc_instrucțiuni> | <bloc_instrucțiuni> <listă_operații>
+    <listă_operații> -> <declarare_funcție> | <declarare_funcție> <listă_operații>
+    <bloc_instrucțiuni> -> <linie_declarare> ; | { <linie_declarare> ; <bloc_instrucțiuni> }
+    <bloc_instrucțiuni> -> <listă_instrucțiuni> ; | { <listă_instrucțiuni> ; <bloc_instrucțiuni> }
+    <linie_declarare> -> <tip> <listă_declarări>
+    <listă_instrucțiuni> -> <instrucțiune> | <instrucțiune> , <listă_instrucțiuni>
+    <instrucțiune> -> <atribuire>
+    <instrucțiune> -> <instr_if>
+    <instrucțiune> -> <instr_citire>
+    <instrucțiune> -> <instr_scriere>
+    <instrucțiune> -> exit
+    <instr_citire> -> scan ( <listă_identificatori> )
+    <instr_scriere> -> print ( <listă_expresii> )
+    <listă_expresii> -> <expresie> | <expresie>, <listă_expresii>
+    <declarare> -> <ID> | <ID> = <expresie>
+    <declarare_funcție> -> <tip> <ID> ( <listă_parametri> ) { <bloc_instrucțiuni> }
+    <instr_if> -> if ( <expresie> ) <bloc_instrucțiuni>
+    <atribuire> -> <id> = <expresie>
+    <expresie> -> const | <id> | <expresie> <operator> <expresie>
+    <operator> -> + | - | / | % | *
+    <funcție> -> <tip> <id> ( <listă_variabile> ) { <listă_operații> }
+    <listă_declarări> -> <declarare> | <declarare>, <listă_declarări>
+    <tip> -> int | float
+    <listă_parametri> -> <tip> <id> | <tip> <id>, <listă_parametri>
+
+----------------------------------------------------------------------------------------------------
+
+    <program> ::= <listă_operații>
+    <listă_operații> ::= <operație> | <operație> <listă_operații>
+    <operație> ::= <declarări_variabile> ; | <declarare_funcție> | <bloc_instrucțiuni>
+    <bloc_instrucțiuni> ::= <instrucțiune> ; | "{" <listă_operații> "}"
+    <declarări_variabile> ::= <tip> <listă_declarare>
+    <tip> ::= "int" | "float" | "char"
+    <listă_declarare> ::= <declarare> {"," <declarare> }
+    <declarare> ::= <id> [ "=" <expresie> ]
+    <expresie> ::= <id> | <apel_funcție> | ["("] <expresie> <operator> <expresie> [")"]
+        <operator> ::= "+" | "-" | "*" | "/" | "%" | "==" | "<=" | ">="
+    <apel_funcție> ::= <id> "(" <listă_expresii> ")"
+    <listă_expresii> ::= <expresie> {"," <expresie> }
+    <declarare_funcție> ::= <tip> <id> "(" <listă_parametri> ")" <bloc_instrucțiuni>
+    <listă_parametri> ::= <parametru> {"," <parametru> }
+    <parametru> ::= <tip> <id>
+    <instrucțiune> ::= <atribuire>
+    <instrucțiune> ::= <instr_if>
+    <instrucțiune> ::= <instr_citire>
+    <instrucțiune> ::= <instr_scriere>
+    <instrucțiune> ::= <instr_ciclare>
+    <instrucțiune> ::= <instr_return>
+    <atribuire> ::= <id> "=" <expresie>
+    <instr_if> ::= "if" "(" <expresie> ")" <bloc_instrucțiuni>
+    <instr_citire> ::= "scan" "(" <listă_id> ")"
+    <instr_scriere> ::= "print" "(" <listă_expresii> ")"
+    <instr_ciclare> ::= "while" "(" <expresie> ")" <bloc_instrucțiuni>
+    <instr_return> ::= "return" [<expresie>]
+    <instrucțiune> ::= "exit"
+    <instrucțiune> ::= "continue"
+    <instrucțiune> ::= "break"
+    
+
+    <id> ::= <literă> { <caracter } | <simbol> { <caracter> }
+    <literă> ::= <literă_mică> | <literă_mare>
+    <caracter> ::= <literă_mică> | <cifră> | <simbol>
+    <literă_mică> ::= "a" | "b" | "c" | "d" | "e" | "f" | "g" | "h" | "i" | "j" | "k" | "l" | "m" | "n" | "o" | "p"
+                    | "q" | "r" | "s" | "t" | "u" | "v" | "w" | "x" | "y" | "z"
+    <literă_mare> ::= "A" | "B" | "C" | "D" | "E" | "F" | "G" | "H" | "I" | "J" | "K" | "L" | "M" | "N" | "O" | "P" 
+                    | "Q" | "R" | "S" | "T" | "U" | "V" | "W" | "X" | "Y" | "Z"
+    <simbol> ::= "$" | "_"
+    <cifră> ::= "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"

@@ -1,0 +1,23 @@
+TOKENS = [
+    "id",
+    "int_const",
+    "float_const",
+    "while",
+    "{",
+    "}",
+    "int",
+    "float",
+    "char",
+    ",",
+    "return",
+    "print",
+    "scan",
+    "(",
+    ")",
+    ";",
+    "=",
+    "+",
+    "-",
+    "%",
+    "/"
+]

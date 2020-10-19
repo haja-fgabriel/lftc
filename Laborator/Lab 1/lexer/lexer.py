@@ -81,6 +81,8 @@ class RegexLexer:
             if token is None:
                 raise TokenizerException(f"Invalid token {index}")
             if tok_type in ['id', 'int_const', 'float_const']:
+                if tok_type == "id" and len(token) > 8:
+                    raise TokenizerException(f"Length of token '{token}' too large")
                 tok_val, id_code = self.__sym_table.add(token)
                 # separate if statements for performance optimizations
                 tok_code = self.__special_ids[tok_type]

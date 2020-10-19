@@ -1,4 +1,5 @@
 int a=21,b=35;scan(a,b);
+int nabucudo;
 int cmmdc(int a,int b){
     int r; // pentru varianta iterativă avem nevoie de rest păstrat separat
     while(b){

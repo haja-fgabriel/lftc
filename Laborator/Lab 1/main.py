@@ -16,9 +16,9 @@ if __name__ == '__main__':
 
     atoms_table = BinaryTree()
     for token in TOKENS:
-        atoms_table.add(token)
+        atoms_table.add_or_get(token)
     print(Fore.YELLOW + "Table of atoms:")
-    atoms_table.print_elems('Atom code', 'Lexical atom')
+    atoms_table.print_elems('Atom code', 'Lexical atom', color=Fore.YELLOW)
     
 
     sym_table = BinaryTree()

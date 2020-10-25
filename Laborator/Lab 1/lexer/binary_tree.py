@@ -44,7 +44,7 @@ class BinaryTree:
         self.__root = None
         pass
 
-    def add(self, val, node = None, parent = None):
+    def add_or_get(self, val, _type=Data, node = None, parent = None):
         # node = self.__root if node is None else node
         # print(f"After: {node}")
         # print(val)
@@ -71,9 +71,9 @@ class BinaryTree:
             #TODO decide on the node parameters
         
         if node.data.value > val:
-            ret_val = self.add(val, node=node.left_son, parent=node)
+            ret_val = self.add_or_get(val, node=node.left_son, parent=node)
         elif node.data.value < val:
-            ret_val = self.add(val, node=node.right_son, parent=node)
+            ret_val = self.add_or_get(val, node=node.right_son, parent=node)
         else:
             return node.data.value, node.data._id
         
@@ -162,11 +162,11 @@ class BinaryTree:
     def get_all(self):
         return self.__get__all(self.__root)
 
-    def print_elems(self, id_col, val_col):
+    def print_elems(self, id_col, val_col, color = Fore.GREEN):
         print(Fore.YELLOW + f"    {id_col:20} {val_col:20}")
-        for elem in sorted(self.get_all(), key=lambda t:t[0]):
+        for elem in self.get_all():
             #print(elem)
-            print(Fore.GREEN + f"    {elem[0]:<20} {elem[1]:20}")
+            print(color + f"    {elem[0]:<20} {elem[1]:20}")
 
 
 if __name__ == '__main__':

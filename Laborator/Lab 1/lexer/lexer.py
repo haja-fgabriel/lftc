@@ -83,8 +83,10 @@ class RegexLexer:
             if tok_type in ['id', 'int_const', 'float_const']:
                 if tok_type == "id" and len(token) > 8:
                     raise TokenizerException(f"Length of token '{token}' too large")
-                tok_val, id_code = self.__sym_table.add(token)
+                tok_val, id_code = self.__sym_table.add_or_get(token)
+                
                 # separate if statements for performance optimizations
+                # so that the atom code for IDs and constants won't be calculated everytime
                 tok_code = self.__special_ids[tok_type]
                 result += [(tok_type, token, tok_code, id_code)]
             else:
@@ -110,17 +112,17 @@ class RegexLexer:
 
     def print_internal_form(self, code):
         print(Fore.YELLOW + "Tokens in code:")
-        print("    Token      Atom value   SymTable value")
+        print("    Atom value   SymTable value")
         for t in code:
             #print(t)
             if t[0] == 'symbol':
-                print(Fore.GREEN + f"    {t[1]:10} {t[2]:<12} -")
+                print(Fore.GREEN + f"    {t[2]:<12} -")
             else:
-                print(Fore.MAGENTA + f"    {t[1]:10} {t[2]:<12} {t[3]}")
+                print(Fore.MAGENTA + f"    {t[2]:<12} {t[3]}")
     
     def print_current_sym_table(self):
         print(Fore.YELLOW + "Symbol table:")
-        self.__sym_table.print_elems('Code of symbol', 'Symbol')
+        self.__sym_table.print_elems('Code of symbol', 'Symbol', color=Fore.MAGENTA)
 
 if __name__ == "__main__":
     r = RegexLexer(None, None)

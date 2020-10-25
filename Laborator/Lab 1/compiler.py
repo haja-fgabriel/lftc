@@ -5,6 +5,7 @@ class Compiler:
 
     def compile(self, code):
         code = self.__linter.lint(code)
+        print(code)
         code = self.__lexer.get_all_tokens(code)
         self.__lexer.print_current_sym_table()
         self.__lexer.print_internal_form(code)

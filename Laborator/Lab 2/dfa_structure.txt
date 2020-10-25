@@ -1,0 +1,12 @@
+<finite_automata> ::= <state_alphabet> "\n" <input_alphabet> "\n" <transitions> "\n" <initial_state> "\n" <final_states>
+<state_alphabet> ::= <state> {, <state>}
+<input_alphabet> ::= <letter> {, <letter>}
+<transitions> ::= <transition> {"\n" <transition>}
+<transition> ::= <state1> " "+ "[" <letter> {" " <letter>} "]" " "+ <state2>
+<final_states> ::= <state> {, <state>}
+
+
+------
+q0, q1, q2
+-, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+q0 [1 2 3 4 5 6 7 8 9] q2, q1 [1 2 3 4 5 6 7 8 9] q2, q2 [0 1 2 3 4 5 6 7 8 9] q2, q0 [-] q1

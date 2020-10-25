@@ -13,8 +13,12 @@ class BasicLinter(ILinter):
                 result += [line.strip()]
 
         return result
+    
+    def __remove_blank_lines(self, code):
+        return [line for line in code if line.strip()]
 
     def lint(self, code):
         # TODO add additional linting procedures
-        return self.__remove_comments(code)
+        code = self.__remove_comments(code)
+        return self.__remove_blank_lines(code)
 

@@ -1,0 +1,19 @@
+{
+    "base_path" : "config",
+    "state_machines" : {
+        "max_identifier_length" : 8,
+        "base_path" : "state_machines",
+        "filenames": {
+            "keyword" : "keyword.txt", 
+            "type" :  "type.txt",
+            "opt_keyword" : "opt_keyword.txt",
+            "id" : "id.txt",
+            "parantheses" : "parantheses.txt",
+            "separator" : "separator.txt", 
+            "sign" : "sign.txt",
+            "curly_brace" : "curly_brace.txt",
+            "int_const" : "int_const.txt",
+            "float_const" : "float_const.txt"
+        }
+    }
+}

@@ -1,0 +1,2 @@
+class TokenizerException(Exception):
+    pass

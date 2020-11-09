@@ -1,0 +1,6 @@
+<finite_automata> ::= <state_alphabet> "\n" <input_alphabet> "\n" <transitions> "\n" <initial_state> "\n" <final_states>
+<state_alphabet> ::= <state> {, <state>}
+<input_alphabet> ::= <letter> {, <letter>}
+<transitions> ::= <transition> {, <transition>}
+<transition> ::= <state1> " "+ "[" <letter> {" " <letter>} "]" " "+ <state2>
+<final_states> ::= <state> {, <state>}

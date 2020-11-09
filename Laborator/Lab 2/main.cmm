@@ -1,0 +1,14 @@
+int a=21,b=35;scan(a,b);
+float t=3.1415926536;
+int nabucodonosor;
+int cmmdc(int a,int b){
+    int r; // pentru varianta iterativă avem nevoie de rest păstrat separat
+    while(b){
+        r=a%b;
+        a=b;
+        b=r; // un comentariu
+    }
+    return a;
+}
+
+print(cmmdc(a,b));

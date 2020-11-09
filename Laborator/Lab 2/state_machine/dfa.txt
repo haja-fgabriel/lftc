@@ -1,0 +1,5 @@
+S, A, B, C
+a
+S [a] A, A [a] B, B [a] C, C [a] S
+S
+B

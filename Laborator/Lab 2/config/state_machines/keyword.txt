@@ -1,0 +1,5 @@
+q0, q1, q2, q3, q4, q5, q6, q7, q8, q9, q10, q11, q12, q13, q14, q15, q16, q17, q18, q19, q20, q21, q22, q23, q24, q25, q26, q27, q28, q29
+a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z
+q0 [w] q1, q1 [h] q2, q2 [i] q3, q3 [l] q4, q4 [e] q5, q0 [b] q6, q6 [r] q7, q7 [e] q8, q8 [a] q9, q9 [k] q10, q0 [c] q11, q11 [o] q12, q12 [n] q13, q13 [t] q14, q14 [i] q15, q15 [n] q16, q16 [u] q17, q17 [e] q18, q0 [i] q19, q19 [f] q20, q0 [s] q21, q21 [c] q22, q22 [a] q23, q23 [n] q24, q0 [p] q25, q25 [r] q26, q26 [i] q27, q27 [n] q28, q28 [t] q29
+q0
+q5, q10, q18, q20, q24, q29

@@ -1,0 +1,19 @@
+%{
+#include "syntax.tab.h"
+%}
+
+%option noyywrap
+
+%%
+[0-9]+  {
+  yylval = atoi(yytext); 
+  printf("found number\n");
+  return NUMBER;
+}
+
+[+]   	return '+';
+[*]   	return '*';
+[\n]  	return '\n';
+.     	return 0;
+
+%%

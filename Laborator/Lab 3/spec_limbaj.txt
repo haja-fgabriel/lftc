@@ -1,0 +1,42 @@
+
+    <program> ::= <listă_operații>
+    <listă_operații> ::= <operație> | <operație> <listă_operații>
+    <operație> ::= <declarări_variabile> ; | <declarare_funcție> | <bloc_instrucțiuni>
+    <bloc_instrucțiuni> ::= <instrucțiune> ; | "{" <listă_operații> "}"
+    <declarări_variabile> ::= <tip> <listă_declarare>
+    <tip> ::= "int" | "float" | "char"
+    <listă_declarare> ::= <declarare> {"," <declarare> }
+    <declarare> ::= <id> [ "=" <expresie> ]
+    <expresie> ::= <id> | <apel_funcție> | ["("] <expresie> <operator> <expresie> [")"]
+        <operator> ::= "+" | "-" | "*" | "/" | "%" | "==" | "<=" | ">="
+    <apel_funcție> ::= <id> "(" <listă_expresii> ")"
+    <listă_expresii> ::= <expresie> {"," <expresie> }
+    <declarare_funcție> ::= <tip> <id> "(" <listă_parametri> ")" <bloc_instrucțiuni>
+    <listă_parametri> ::= <parametru> {"," <parametru> }
+    <parametru> ::= <tip> <id>
+    <instrucțiune> ::= <atribuire>
+    <instrucțiune> ::= <instr_if>
+    <instrucțiune> ::= <instr_citire>
+    <instrucțiune> ::= <instr_scriere>
+    <instrucțiune> ::= <instr_ciclare>
+    <instrucțiune> ::= <instr_return>
+    <atribuire> ::= <id> "=" <expresie>
+    <instr_if> ::= "if" "(" <expresie> ")" <bloc_instrucțiuni>
+    <instr_citire> ::= "scan" "(" <listă_id> ")"
+    <instr_scriere> ::= "print" "(" <listă_expresii> ")"
+    <instr_ciclare> ::= "while" "(" <expresie> ")" <bloc_instrucțiuni>
+    <instr_return> ::= "return" [<expresie>]
+    <instrucțiune> ::= "exit"
+    <instrucțiune> ::= "continue"
+    <instrucțiune> ::= "break"
+    
+
+    <id> ::= <literă> { <caracter } | <simbol> { <caracter> }
+    <literă> ::= <literă_mică> | <literă_mare>
+    <caracter> ::= <literă_mică> | <cifră> | <simbol>
+    <literă_mică> ::= "a" | "b" | "c" | "d" | "e" | "f" | "g" | "h" | "i" | "j" | "k" | "l" | "m" | "n" | "o" | "p"
+                    | "q" | "r" | "s" | "t" | "u" | "v" | "w" | "x" | "y" | "z"
+    <literă_mare> ::= "A" | "B" | "C" | "D" | "E" | "F" | "G" | "H" | "I" | "J" | "K" | "L" | "M" | "N" | "O" | "P" 
+                    | "Q" | "R" | "S" | "T" | "U" | "V" | "W" | "X" | "Y" | "Z"
+    <simbol> ::= "$" | "_"
+    <cifră> ::= "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"

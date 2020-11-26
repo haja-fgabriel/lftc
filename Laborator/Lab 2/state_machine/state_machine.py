@@ -1,6 +1,8 @@
 import re
 
-from utils.constants import *
+MAX_SEQUENCE_LENGTH = 99999999
+if __name__ != "__main__":
+    from utils.constants import *
 
 class NonDeterministicError(Exception):
     pass
@@ -118,14 +120,12 @@ class StateMachine:
         if not max_length:
             max_length = self.__max_sequence_length
         state = self.start_state
-        tmp = 'epsilon'
-        result = 'epsilon' if state.is_accept_state else ''
+        tmp = ''
+        result = '' if state.is_accept_state else None
         for c in sequence:
             if not max_length: break
             try:
                 state = state.transitions[c]
-                if tmp == 'epsilon':
-                    tmp = ''
                 tmp += c
                 if state.is_accept_state:
                     result = tmp
@@ -133,5 +133,5 @@ class StateMachine:
                 break
             max_length -= 1
         return result
-        
+
 

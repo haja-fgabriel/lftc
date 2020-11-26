@@ -1,6 +1,22 @@
-S -> AB | CD
-A -> aAb | ε
-B -> Bc | ε
-C -> aC | ε
-D -> bDc | ε
+L = {a^n b^m c^k | n,m,k apartin N, (n=m) sau (m=k) }
 
+G = (N, Σ, P, S)
+
+Σ = {a, b, c}
+N = {S, A, B, C, D}
+P = {
+    S -> AB | CD
+    A -> aAb | ε
+    B -> Bc | ε
+    C -> aC | ε
+    D -> bDc | ε
+}
+
+Exemplu derivare pentru 'aaabbb'
+S => AB => aAb => aaaAbbb => aaabbb
+
+Exemplu pentru 'abbcc'
+S => CD => aAbDc => abbDcc => abbcc
+
+Gramatica de tip 0, precum si de tip 2 (este indep. de context), 
+dar nu de tip 1 (pentru A -> ε, exista o alta regula in care A apare in membrul drept)
